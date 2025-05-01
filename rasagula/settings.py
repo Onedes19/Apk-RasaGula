@@ -12,28 +12,28 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+"""
+Django settings for rasagula project.
+"""
+
 from pathlib import Path
 import os
-from decouple import config
+from decouple import config  # Pastikan python-decouple terinstall
+import dj_database_url
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+# Path dasar proyek
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# Keamanan
 SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+# Pengaturan Host
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
-
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://127.0.0.1').split(',')
 
-# Application definition
-
+# Aplikasi yang Terinstall
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,12 +49,13 @@ INSTALLED_APPS = [
 # Custom user model
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',  # Jika tidak ingin menggunakan CSRF
+    'django.middleware.csrf.CsrfViewMiddleware',  # Aktifkan CSRF
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -83,45 +84,32 @@ TEMPLATES = [
 # WSGI application
 WSGI_APPLICATION = 'rasagula.wsgi.application'
 
-# Database settings
+# Pengaturan Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(default=config('DATABASE_PUBLIC_URL'))
 }
 
-# Password validation
+# Validasi Password
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internationalization settings
+# Internasionalisasi
 LANGUAGE_CODE = 'id'  # Ubah bahasa ke Bahasa Indonesia
-
-TIME_ZONE = 'Asia/Makassar'  # Ubah zona waktu ke WITA (Asia/Makassar)
+TIME_ZONE = 'Asia/Makassar'  # Zona WITA
 
 USE_I18N = True
-
 USE_TZ = True
 
-STATIC_URL = '/static/'  # URL prefix untuk file statis
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Lokasi folder statis di produksi
+# Pengaturan Statis
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Lokasi folder statis untuk produksi
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Lokasi folder file statis di lokal
+    os.path.join(BASE_DIR, 'static'),  # Folder file statis di lokal
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -129,14 +117,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Login URL
-LOGIN_URL = '/accounts/login/'  # Sesuaikan dengan rute login Anda
+# Pengaturan Login
+LOGIN_URL = '/accounts/login/'  # Sesuaikan dengan URL login
 
-# Email settings
+# Pengaturan Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-
