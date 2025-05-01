@@ -22,3 +22,4 @@ python-decouple==3.8
 
 # Database connection
 dj-database-url
+psycopg2-binary
