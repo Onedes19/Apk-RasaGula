@@ -1,0 +1,23 @@
+# Abaikan database lokal
+db.sqlite3
+
+# Abaikan file Python cache
+__pycache__/
+
+# Abaikan folder virtual environment
+venv/
+.venv/
+
+# Abaikan file log
+*.log
+
+# Abaikan file sistem
+*.DS_Store
+Thumbs.db
+
+# Jika ada file backup Word atau lainnya
+*.bak
+*.tmp
+
+# Jika pakai Jupyter
+*.ipynb_checkpoints/

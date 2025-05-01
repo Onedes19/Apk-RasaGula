@@ -1,0 +1,933 @@
+<!doctype html>
+{% load static %}
+<!-- Awal elemen HTML dengan bahasa diatur ke 'en' (Inggris) -->
+<html lang="en">
+  <head>
+    <!-- Mengatur karakter encoding halaman ke UTF-8 -->
+    <meta charset="UTF-8" />
+    <!-- Mengatur kompatibilitas untuk browser Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mengatur skala halaman agar responsif di perangkat seluler -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 
+    - primary meta tags
+  -->
+    <title>Beranda</title>
+    <meta name="title" content="Beranda" />
+    <!-- 
+    - svg icon
+  -->
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/rasagula.svg' %}"
+      type="image/svg+xml"
+    />
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 
+    - custom css link
+  -->
+    <!-- Menghubungkan file CSS khusus untuk gaya halaman -->
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+  </head>
+
+  <body id="top">
+    <!-- 
+    - #PRELOADER
+  -->
+    <!-- Preloader ditampilkan hingga halaman selesai dimuat -->
+    <div class="preloader" data-preloader>
+      <div class="circle"></div>
+    </div>
+
+    <!-- 
+    - #HEADER
+  -->
+
+    <!-- Header utama dengan logo, navigasi, dan tombol masuk -->
+    <header class="header" data-header>
+      <div class="container">
+        <a href="#" class="logo">
+          <img
+            src="{% static 'images/logo.png'%}"
+            width="50"
+            height="26"
+            alt="RasaGula Home"
+          />
+        </a>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <button
+              class="nav-close-btn"
+              aria-label="clsoe menu"
+              data-nav-toggler
+            >
+              <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <!-- Daftar navigasi di header -->
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <a href="#" class="navbar-link title-md">Beranda</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="#deteksi" class="navbar-link title-md">Deteksi</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="#about" class="navbar-link title-md">Diabetes</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="#blog" class="navbar-link title-md">Artikel</a>
+            </li>
+
+            <li class="navbar-item">
+              <a href="#footer" class="navbar-link title-md">Kontak</a>
+            </li>
+          </ul>
+        </nav>
+
+        <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <a href="{% url 'auth' %}" class="btn has-before title-md">Masuk</a>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+      </div>
+    </header>
+
+    <main>
+      <article>
+        <!-- 
+        - #HERO
+      -->
+
+        <!-- Bagian hero untuk pengantar aplikasi RasaGula -->
+        <section class="section hero" aria-label="home">
+          <div class="container">
+            <div class="hero-content">
+              <p class="hero-subtitle has-before" data-reveal="left">
+                Selamat datang di RasaGula
+              </p>
+
+              <!-- Judul besar pada bagian hero -->
+              <h2 class="headline-lg hero-title" data-reveal="left">
+                Temukan risiko diabetes Anda <br />
+                hanya dalam beberapa menit!
+              </h2>
+            </div>
+
+            <figure class="hero-banner" data-reveal="right">
+              <img
+                src="{% static 'images/Diabetes-Hero.png' %}"
+                width="380px"
+                height="350px"
+                loading="eager"
+                alt="hero banner"
+                class="w-100"
+                id="bg"
+              />
+            </figure>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- 
+        - #SERVICE
+      -->
+
+    <!-- Bagian layanan utama, termasuk tombol untuk memulai deteksi diabetes -->
+    <section class="service" aria-label="service" id="deteksi">
+      <div class="container-service">
+        <ul class="service-list">
+          <li>
+            <div class="service-card" data-reveal="bottom">
+              <div class="card-icon">
+                <img
+                  src="{% static 'images/icon-1.svg'%}"
+                  width="71"
+                  height="71"
+                  loading="lazy"
+                  alt="icon"
+                />
+              </div>
+
+              <h3 class="headline-sm card-title">Mulai Deteksi</h3>
+              <br />
+
+              <a href="{% url 'deteksi' %}"
+                ><button
+                  class="btn-circle"
+                  aria-label="read more about psychiatry"
+                >
+                  <ion-icon
+                    name="arrow-forward"
+                    aria-hidden="true"
+                  ></ion-icon></button
+              ></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 
+        - #ABOUT
+      -->
+
+    <!-- Bagian tentang diabetes melitus, termasuk gejala, faktor risiko, dan pencegahan -->
+    <section class="section about" aria-labelledby="about-label" id="about">
+      <div class="container">
+        <div class="about-content">
+          <p
+            class="section-subtitle title-lg has-after"
+            id="about-label"
+            data-reveal="left"
+          >
+            Tentang
+          </p>
+
+          <h2 class="headline-md" data-reveal="left">Diabetes Melitus</h2>
+
+          <p class="section-text" data-reveal="left">
+            Diabetes merupakan kondisi yang disebabkan oleh kekurangan atau
+            ketidakmampuan insulin bekerja secara efektif, yang berujung pada
+            meningkatnya kadar gula darah (glukosa).
+          </p>
+
+          <!-- Daftar tombol untuk mengubah tab konten di bagian tentang -->
+          <ul class="tab-list" data-reveal="left">
+            <li>
+              <button class="tab-btn active" id="gejala-btn">Gejala</button>
+            </li>
+
+            <li>
+              <button class="tab-btn" id="faktor-btn">Faktor Risiko</button>
+            </li>
+
+            <li>
+              <button class="tab-btn" id="pencegahan-btn">Pencegahan</button>
+            </li>
+          </ul>
+
+          <div id="about-change">
+            <p class="tab-text" data-reveal="left">
+              Di antara gejalanya, ditemukan:
+            </p>
+
+            <div class="wrapper">
+              <ul class="about-list">
+                <li class="about-item" data-reveal="left">
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                  <span class="span">Rasa haus yang berlebihan</span>
+                </li>
+
+                <li class="about-item" data-reveal="left">
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                  <span class="span">Sering buang air kecil</span>
+                </li>
+
+                <li class="about-item" data-reveal="left">
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                  <span class="span">Kelelahan yang berlebihan</span>
+                </li>
+
+                <li class="about-item" data-reveal="left">
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+                  <span class="span">Nafsu makan yang berlebihan</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <figure class="about-banner" data-reveal="right">
+          <img
+            src="{% static 'images/about-banner.png'%}"
+            width="554"
+            height="678"
+            loading="lazy"
+            alt="about banner"
+            class="w-100"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <div class="container2"></div>
+
+    <!-- 
+        - #blog des articles
+      -->
+
+    <!-- Bagian artikel terbaru yang berisi blog dan informasi tambahan -->
+    <section id="blog" class="section blog" aria-labelledby="blog-label">
+      <div class="container">
+        <h2 class="section-title headline-md text-center" data-reveal="bottom">
+          Artikel Terbaru
+        </h2>
+
+        <ul class="grid-list">
+          <li>
+            <div
+              class="blog-card has-before has-after"
+              data-reveal="bottom"
+              id="article1card"
+            >
+              <style>
+                #article1card {
+                  background-image: url("{% static 'images/article1.jpg' %}");
+                }
+                #article2card {
+                  background-image: url("{% static 'images/article2.jpg' %}");
+                }
+                #article3card {
+                  background-image: url("{% static 'images/article3.jpg' %}");
+                }
+              </style>
+              <div class="meta-wrapper">
+                <div class="card-meta">
+                  <ion-icon name="person-outline"></ion-icon>
+
+                  <span class="span">Oleh Putu</span>
+                </div>
+
+                <div class="card-meta">
+                  <ion-icon name="folder-outline"></ion-icon>
+
+                  <span class="span">Katadata.co.id</span>
+                </div>
+              </div>
+
+              <h3 class="headline-sm card-title">
+                Makan Bergizi Gratis dan Momentum Melawan Diabetes Melitus
+              </h3>
+
+              <time class="title-sm date" datetime="2024-11-09"
+                >09 November 2024</time
+              >
+
+              <p class="card-text">
+                Diabetes melitus adalah salah satu tantangan kesehatan global
+                yang terus meningkat. Program makan bergizi gratis hadir sebagai
+                langkah nyata dalam ...
+              </p>
+
+              <a href="#" class="btn-text title-lg" id="a-href1"
+                >Lihat Selengkapnya</a
+              >
+            </div>
+            <!-- Popup Container -->
+            <div class="popup-container" id="popupContainer1">
+              <div class="popup-content">
+                <h1 class="popup-title">
+                  Makan Bergizi Gratis dan Momentum Melawan Diabetes Melitus
+                </h1>
+                <img
+                  id="article1-img"
+                  src="{% static 'images/article1.jpg'%}"
+                  alt=""
+                />
+                <ul>
+                  <li>
+                    <h3>Pendahuluan</h3>
+                    <p>
+                      Diabetes melitus adalah salah satu tantangan kesehatan
+                      global yang terus meningkat. Menurut data dari
+                      International Diabetes Federation (IDF), lebih dari 500
+                      juta orang di seluruh dunia mengidap diabetes pada tahun
+                      2021, dan jumlah ini diperkirakan akan terus bertambah
+                      hingga 700 juta pada tahun 2045. Banyak masyarakat yang
+                      terjebak dalam gaya hidup tidak sehat, termasuk pola makan
+                      yang buruk, kurang aktivitas fisik, dan stres kronis,
+                      sehingga meningkatkan risiko diabetes. Untuk mengatasi
+                      masalah ini, pemerintah, organisasi kesehatan, dan
+                      komunitas lokal mulai menggalakkan pentingnya konsumsi
+                      makanan bergizi sebagai bagian dari strategi pencegahan
+                      dan pengelolaan diabetes.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Pentingnya Konsumsi Makanan Bergizi</h3>
+                    <p>
+                      Nutrisi yang tepat memainkan peran kunci dalam
+                      pengendalian diabetes. Penelitian menunjukkan bahwa pola
+                      makan yang kaya akan sayuran, buah-buahan, protein tanpa
+                      lemak, dan biji-bijian utuh dapat membantu menjaga kadar
+                      gula darah tetap stabil. Selain itu, makanan bergizi dapat
+                      mencegah komplikasi serius yang terkait dengan diabetes,
+                      seperti penyakit jantung, kerusakan saraf, dan gagal
+                      ginjal. Penting juga untuk membatasi konsumsi makanan
+                      olahan dan minuman manis, yang dapat menyebabkan lonjakan
+                      gula darah. Makanan bergizi tidak hanya membantu
+                      mengendalikan diabetes, tetapi juga meningkatkan kualitas
+                      hidup secara keseluruhan.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Program Makan Gratis</h3>
+                    <p>
+                      Berbagai program makan gratis yang menyediakan makanan
+                      bergizi telah diluncurkan di berbagai daerah untuk
+                      membantu masyarakat, khususnya di kalangan ekonomi lemah.
+                      Program ini bertujuan untuk meningkatkan aksesibilitas
+                      terhadap makanan sehat sekaligus meningkatkan kesadaran
+                      masyarakat tentang pentingnya pola makan yang baik.
+                      Sebagai contoh, beberapa kota di Indonesia telah
+                      menginisiasi "Dapur Sehat" yang menyediakan makanan
+                      bergizi gratis bagi masyarakat kurang mampu. Selain itu,
+                      kampanye edukasi dilakukan untuk mengajarkan masyarakat
+                      bagaimana memilih dan mengolah makanan bergizi yang sesuai
+                      dengan kebutuhan penderita diabetes.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Momentum Kolaborasi</h3>
+                    <p>
+                      Dalam momentum Hari Diabetes Sedunia, pemerintah,
+                      organisasi kesehatan, dan komunitas lokal bersinergi untuk
+                      menyelenggarakan berbagai kegiatan, seperti seminar
+                      kesehatan, pemeriksaan gula darah gratis, dan distribusi
+                      makanan bergizi. Upaya ini juga melibatkan tenaga medis,
+                      termasuk dokter, ahli gizi, dan relawan, yang memberikan
+                      edukasi tentang pola makan sehat dan pentingnya aktivitas
+                      fisik. Kolaborasi ini tidak hanya bertujuan untuk
+                      meningkatkan kesadaran masyarakat, tetapi juga untuk
+                      menciptakan lingkungan yang mendukung gaya hidup sehat
+                      bagi penderita diabetes.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Kesimpulan</h3>
+                    <p>
+                      Meningkatkan akses terhadap makanan bergizi adalah langkah
+                      penting dalam memerangi diabetes melitus. Pola makan yang
+                      sehat dan seimbang dapat membantu mengendalikan kadar gula
+                      darah, mencegah komplikasi, dan meningkatkan kualitas
+                      hidup penderita diabetes. Dengan kolaborasi yang
+                      melibatkan berbagai pihak, termasuk pemerintah, organisasi
+                      kesehatan, dan komunitas lokal, diharapkan angka penderita
+                      diabetes dapat ditekan, dan masyarakat lebih sadar akan
+                      pentingnya pola hidup sehat. Langkah-langkah ini menjadi
+                      harapan besar dalam menciptakan generasi yang lebih sehat
+                      dan terbebas dari ancaman diabetes.
+                    </p>
+                  </li>
+                </ul>
+                <div class="source-meta">
+                  <h3 class="source-text">
+                    Sumber
+                    <a
+                      href="https://katadata.co.id/indepth/opini/672de29828d0f/makan-bergizi-gratis-dan-momentum-melawan-diabetes-melitus"
+                      target="_blank"
+                      style="font-weight: normal"
+                      >Kata Data - Makan Bergizi Gratis dan Momentum Melawan
+                      Diabetes Melitus</a
+                    >
+                  </h3>
+                </div>
+                <button class="close-btn" onclick="closePopup(1)">Tutup</button>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div
+              class="blog-card has-before has-after"
+              data-reveal="bottom"
+              id="article2card"
+            >
+              <div class="meta-wrapper">
+                <div class="card-meta">
+                  <ion-icon name="person-outline"></ion-icon>
+
+                  <span class="span">Oleh Diaz</span>
+                </div>
+
+                <div class="card-meta">
+                  <ion-icon name="folder-outline"></ion-icon>
+
+                  <span class="span">Klinikkeluarga.com</span>
+                </div>
+              </div>
+
+              <h3 class="headline-sm card-title">
+                Inovasi Baru dalam Pengobatan Diabetes: Terobosan Teknologi
+                Canggih
+              </h3>
+
+              <time class="title-sm date" datetime="2024-11-02"
+                >02 November 2024</time
+              >
+
+              <p class="card-text">
+                Diabetes melitus merupakan salah satu masalah kesehatan global
+                yang terus meningkat, dengan jumlah penderita yang diperkirakan
+                mencapai 537 juta orang pada tahun 2021 ...
+              </p>
+
+              <a href="#" class="btn-text title-lg" id="a-href2"
+                >Lihat Selengkapnya</a
+              >
+            </div>
+            <!-- Popup Container -->
+            <div class="popup-container" id="popupContainer2">
+              <div class="popup-content">
+                <h1 class="popup-title">
+                  Inovasi Baru dalam Pengobatan Diabetes: Terobosan Teknologi
+                  Canggih
+                </h1>
+                <img
+                  id="article2-img"
+                  src="{% static 'images/article2.jpg'%}"
+                  alt=""
+                />
+                <ul>
+                  <li>
+                    <h3>Pendahuluan</h3>
+                    <p>
+                      Diabetes melitus merupakan salah satu masalah kesehatan
+                      global yang terus meningkat, dengan jumlah penderita yang
+                      diperkirakan mencapai 537 juta orang pada tahun 2021. Di
+                      Indonesia, prevalensi diabetes melitus juga menunjukkan
+                      angka yang mengkhawatirkan. Namun, kemajuan dalam
+                      teknologi kesehatan menawarkan harapan baru bagi penderita
+                      diabetes.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Perangkat Wearable untuk Pemantauan Glukosa</h3>
+                    <p>
+                      Dalam sebuah konferensi kesehatan di Jakarta, para ahli
+                      kesehatan dan peneliti memperkenalkan perangkat wearable
+                      yang mampu memantau kadar gula darah secara real-time.
+                      Perangkat ini menggunakan sensor canggih yang dapat
+                      dipasang di kulit dan terhubung dengan aplikasi
+                      smartphone, memberikan informasi langsung tentang kadar
+                      glukosa dalam darah.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Manfaat Perangkat Wearable</h3>
+                    <p>
+                      Dr. Anita Sari, seorang endokrinologis dari RSUD Jakarta,
+                      menjelaskan, "Perangkat ini tidak hanya memudahkan pasien
+                      dalam memantau kadar gula mereka, tetapi juga membantu
+                      dokter dalam mengambil keputusan yang lebih tepat terkait
+                      pengobatan. Dengan pemantauan yang lebih akurat, kita
+                      dapat mengurangi risiko komplikasi diabetes."
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Fitur dan Hasil Studi</h3>
+                    <p>
+                      Perangkat ini juga dilengkapi dengan fitur pengingat untuk
+                      mengonsumsi obat dan mengatur jadwal makan, sehingga
+                      pasien dapat lebih disiplin dalam menjalani pengobatan.
+                      Hasil studi awal menunjukkan bahwa penggunaan perangkat
+                      ini dapat menurunkan kadar HbA1c—ukuran rata-rata gula
+                      darah selama tiga bulan—secara signifikan pada pasien
+                      diabetes melitus.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Pentingnya Edukasi</h3>
+                    <p>
+                      Meskipun teknologi ini menjanjikan, Dr. Sari mengingatkan
+                      pentingnya edukasi bagi pasien. "Teknologi hanya alat
+                      bantu. Pengetahuan tentang diabetes, pola makan sehat, dan
+                      olahraga tetap menjadi kunci keberhasilan dalam
+                      pengelolaan penyakit ini."
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Kesimpulan</h3>
+                    <p>
+                      Inovasi dalam pengobatan diabetes ini diharapkan dapat
+                      diterapkan secara lebih luas dalam waktu dekat, memberikan
+                      harapan baru bagi jutaan penderita diabetes di Indonesia.
+                      Dengan kolaborasi antara dokter, peneliti, dan perusahaan
+                      teknologi, diharapkan kualitas hidup penderita diabetes
+                      dapat meningkat dan angka komplikasi penyakit ini dapat
+                      ditekan secara signifikan.
+                    </p>
+                  </li>
+                </ul>
+                <div class="source-meta">
+                  <h3 class="source-text">
+                    Sumber
+                    <a
+                      href="https://www.klinikkeluarga.com/news/selengkapnya/inovasi-baru-dalam-pengobatan-diabetes-terobosan-teknologi-canggih"
+                      target="_blank"
+                      style="font-weight: normal"
+                      >Klinik Keluarga - Inovasi Baru dalam Pengobatan Diabetes:
+                      Terobosan Teknologi Canggih</a
+                    >
+                  </h3>
+                </div>
+                <button class="close-btn" onclick="closePopup(2)">Tutup</button>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div
+              class="blog-card has-before has-after"
+              data-reveal="bottom"
+              id="article3card"
+            >
+              <div class="meta-wrapper">
+                <div class="card-meta">
+                  <ion-icon name="person-outline"></ion-icon>
+
+                  <span class="span">Oleh Fahmi</span>
+                </div>
+
+                <div class="card-meta">
+                  <ion-icon name="folder-outline"></ion-icon>
+
+                  <span class="span">Unair.ac.id</span>
+                </div>
+              </div>
+
+              <h3 class="headline-sm card-title">
+                Dampak Aktivitas Fisik terhadap Pengelolaan Diabetes
+              </h3>
+              <time class="title-sm date" datetime="2022-01-28"
+                >03 Oktober 2024</time
+              >
+              <p class="card-text">
+                Olahraga adalah elemen kunci dalam pengelolaan diabetes.
+                Olahraga membantu mengontrol kadar gula darah, meningkatkan
+                kesehatan secara umum ...
+              </p>
+
+              <a href="#" class="btn-text title-lg" id="a-href3"
+                >Lihat Selengkapnya</a
+              >
+            </div>
+            <!-- Popup Container -->
+            <div class="popup-container" id="popupContainer3">
+              <div class="popup-content">
+                <h1 class="popup-title">
+                  Dampak Aktivitas Fisik terhadap Pengelolaan Diabetes
+                </h1>
+                <img
+                  id="article3-img"
+                  src="{% static 'images/article3.jpg'%}"
+                  alt=""
+                />
+                <ul>
+                  <li>
+                    <h3>Pendahuluan</h3>
+                    <p>
+                      Olahraga adalah elemen kunci dalam pengelolaan diabetes.
+                      Olahraga tidak hanya membantu mengontrol kadar gula darah
+                      tetapi juga meningkatkan kesehatan secara umum. Berikut
+                      adalah bagaimana aktivitas fisik dapat memengaruhi
+                      pengelolaan diabetes secara positif dan beberapa tips
+                      praktis untuk memasukkan olahraga ke dalam rutinitas
+                      harian Anda.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Manfaat Olahraga untuk Penderita Diabetes</h3>
+                    <p>
+                      Olahraga membantu otot menggunakan glukosa sebagai sumber
+                      energi, yang mengurangi kadar gula darah dan meningkatkan
+                      sensitivitas insulin, sehingga sel-sel tubuh dapat
+                      menggunakan glukosa dengan lebih baik. Selain itu,
+                      aktivitas fisik mendukung Nafsu makan yang berlebihan atau
+                      menjaga berat badan yang sehat, yang sangat penting bagi
+                      penderita diabetes melitus karena pengurangan lemak tubuh
+                      dapat meningkatkan kontrol gula darah. Penderita diabetes
+                      juga memiliki risiko yang lebih tinggi terkena penyakit
+                      jantung, dan olahraga rutin dapat meningkatkan kesehatan
+                      kardiovaskular dengan mengurangi risiko hipertensi,
+                      serangan jantung, dan stroke. Akhirnya, aktivitas fisik
+                      juga dapat mengurangi stres, kecemasan, dan depresi, yang
+                      dapat mempersulit pengelolaan diabetes.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Jenis Olahraga yang Direkomendasikan</h3>
+                    <p>
+                      Aktivitas seperti berjalan kaki, jogging, bersepeda, dan
+                      berenang sangat baik untuk meningkatkan kebugaran
+                      kardiorespirasi dan membakar kalori. Latihan kekuatan
+                      seperti angkat beban dan latihan resistensi dengan pita
+                      elastis membantu membangun dan mempertahankan massa otot,
+                      yang meningkatkan sensitivitas insulin. Latihan seperti
+                      yoga dan tai chi dapat meningkatkan keseimbangan,
+                      fleksibilitas, dan mengurangi risiko jatuh, terutama pada
+                      orang tua.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Tips untuk Memulai</h3>
+                    <p>
+                      Sebelum memulai program olahraga baru, konsultasikan
+                      dengan dokter Anda untuk memastikan aktivitas tersebut
+                      aman dan sesuai dengan kondisi Anda. Jika Anda belum aktif
+                      dalam waktu lama, mulailah dengan aktivitas ringan hingga
+                      sedang dan tingkatkan intensitas serta durasi secara
+                      perlahan. Usahakan untuk melakukan setidaknya 150 menit
+                      aktivitas fisik dengan intensitas sedang setiap minggu,
+                      dibagi dalam beberapa hari. Periksa kadar gula darah Anda
+                      sebelum dan setelah Berolahraga rutin untuk memahami
+                      bagaimana tubuh Anda bereaksi terhadap aktivitas fisik.
+                      Minumlah banyak air sebelum, selama, dan setelah olahraga
+                      untuk menjaga tubuh tetap terhidrasi. Pilih aktivitas yang
+                      Anda nikmati untuk tetap termotivasi dan menjadikan
+                      olahraga bagian yang menyenangkan dari rutinitas Anda.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Integrasi dalam Kehidupan Sehari-hari</h3>
+                    <p>
+                      Masukkan olahraga ke dalam rutinitas harian Anda dengan
+                      memilih aktivitas seperti berjalan kaki saat bepergian,
+                      menggunakan tangga daripada lift, atau mengikuti kelas
+                      olahraga kelompok.
+                    </p>
+                  </li>
+                  <li>
+                    <h3>Kesimpulan</h3>
+                    <p>
+                      Olahraga adalah alat yang kuat untuk pengelolaan diabetes.
+                      Dengan secara rutin memasukkan aktivitas fisik ke dalam
+                      hidup Anda, Anda dapat meningkatkan kontrol gula darah,
+                      mengurangi risiko komplikasi, dan meningkatkan
+                      kesejahteraan Anda secara keseluruhan. Konsultasikan
+                      dengan dokter Anda dan mulailah menikmati berbagai manfaat
+                      olahraga untuk hidup yang lebih sehat dan aktif.
+                    </p>
+                  </li>
+                </ul>
+                <div class="source-meta">
+                  <h3 class="source-text">
+                    Sumber
+                    <a
+                      href="https://vokasi.unair.ac.id/manfaat-aktivitas-fisik-dalam-mengelola-diabetes-melitus-panduan-dan-tips-praktis/"
+                      target="_blank"
+                      style="font-weight: normal"
+                      >Unair - Dampak Aktivitas Fisik terhadap Pengelolaan
+                      Diabetes</a
+                    >
+                  </h3>
+                </div>
+                <button class="close-btn" onclick="closePopup(3)">Tutup</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 
+    - #FOOTER
+  -->
+
+    <!-- Footer halaman dengan kontak, deskripsi aplikasi, dan tautan media sosial -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="section footer-top">
+          <div class="footer-brand" data-reveal="bottom">
+            <a href="index.html" class="logo">
+              <img
+                src="{% static 'images/logo.png'%}"
+                width="64"
+                height="30"
+                loading="lazy"
+                alt="RasaGula Home"
+              />
+            </a>
+            <ul class="contact-list has-after">
+              <li class="contact-item">
+                <div class="item-icon">
+                  <ion-icon name="mail-open-outline"></ion-icon>
+                </div>
+                <div>
+                  <p>
+                    Untuk informasi lebih lanjut <br /><a
+                      href="mailto:rasagula27@gmail.com"
+                      class="contact-link"
+                      >rasagula27@gmail.com</a
+                    >
+                  </p>
+                </div>
+              </li>
+              <li class="contact-item">
+                <div class="item-icon">
+                  <ion-icon name="call-outline"></ion-icon>
+                </div>
+                <div>
+                  <p>
+                    Telephone Mobile :
+                    <a href="tel:082291148382" class="contact-link"
+                      >+6282291148382</a
+                    >
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-list" data-reveal="bottom">
+            <p class="headline-sm footer-list-title">Tentang</p>
+            <p class="text">
+              Rasagula adalah aplikasi tugas akhir saya yang menggunakan
+              algoritma KNN untuk mendeteksi risiko diabetes secara cepat dan
+              akurat, sekaligus meningkatkan kesadaran pencegahan dini.
+            </p>
+            <address class="address">
+              <ion-icon name="map-outline"></ion-icon>
+              <span class="text"
+                >Makassar <br />
+                Talasalapang, 90221</span
+              >
+            </address>
+          </div>
+          <ul class="footer-list" data-reveal="bottom">
+            <li>
+              <p class="headline-sm footer-list-title">Layanan</p>
+            </li>
+            <li>
+              <a href="{%url 'deteksi'%}" class="text footer-link">Deteksi</a>
+            </li>
+            <li>
+              <a href="#blog" class="text footer-link">Artikel Terkini</a>
+            </li>
+            <li>
+              <a href="{% url 'pola-makan' %}" class="text footer-link"
+                >Pola Makan</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-bottom">
+          <p class="text copyright">&copy; RasaGula 2024</p>
+          <ul class="social-list">
+            <li>
+              <a
+                href="https://www.instagram.com/oneda_tyrana?igsh=Y3A5Zzl3Z3R0ODJi"
+                class="social-link"
+              >
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://web.facebook.com/wanda.tyrana.3"
+                class="social-link"
+              >
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/Onedes19" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+    <a
+      href="#top"
+      class="back-top-btn"
+      aria-label="back to top"
+      data-back-top-btn
+    >
+      <ion-icon name="chevron-up"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <!-- Menghubungkan file JavaScript khusus untuk interaktivitas halaman -->
+    <script src="{%static 'index.js'%}"></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      // Smooth scrolling for #blog
+      document
+        .querySelector('a[href="#blog"]')
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector("#blog");
+          const headerHeight =
+            document.querySelector("header").offsetHeight || 0;
+          const extraMargin = 20; // Add extra spacing
+          const offset =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight -
+            extraMargin;
+          window.scrollTo({
+            top: offset,
+            behavior: "smooth",
+          });
+        });
+
+      // Smooth scrolling for #deteksi
+      document
+        .querySelector('a[href="#deteksi"]')
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector("#deteksi");
+          const headerHeight =
+            document.querySelector("header").offsetHeight || 0; // Tinggi header dinamis
+          const extraMargin = 240; // Tambahkan margin ekstra (atur sesuai kebutuhan)
+          const offset =
+            target.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerHeight -
+            extraMargin;
+
+          console.log("Header Height:", headerHeight);
+          console.log("Extra Margin:", extraMargin);
+          console.log("Final Offset:", offset);
+
+          window.scrollTo({
+            top: offset,
+            behavior: "smooth",
+          });
+        });
+    </script>
+  </body>
+</html>

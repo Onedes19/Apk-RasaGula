@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pola Makan</title>
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/rasagula.svg '%}"
+      type="image/svg+xml"
+    />
+    <!-- Mengimpor stylesheet dan font untuk halaman pola makan -->
+    <link rel="stylesheet" href="{% static 'dashboard/all.min.css' %}" />
+    <!-- Mengimpor stylesheet dan font untuk halaman pola makan -->
+    <link rel="stylesheet" href="{% static 'dashboard/framework.css'%}" />
+    <!-- Mengimpor stylesheet dan font untuk halaman pola makan -->
+    <link rel="stylesheet" href="{% static 'dashboard/master.css'%}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script
+      src="https://kit.fontawesome.com/0d6199263a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+      :root {
+        /**
+         * WARNA
+         */
+        --rich-black-fogra-29: hsl(222, 44%, 8%);
+        --middle-blue-green_40: hsla(174, 64%, 71%, 0.4);
+        --dark-red: hsl(4, 50%, 35%);
+        --dark-red_a25: hsla(4, 60%, 25%, 0.25);
+        --independece: hsl(236, 14%, 39%);
+        --copper-red: hsl(15, 58%, 50%);
+        --brick-red: hsl(4, 50%, 35%);
+        --space-cadet: hsla(226, 45%, 24%);
+        --eerie-black: hsl(0, 0%, 13%);
+        --beige: hsl(37, 53%, 88%);
+        --gray-web: hsl(0, 0%, 50%);
+        --gainsboro: hsl(0, 0%, 87%);
+        --white: hsl(0, 0%, 100%);
+        --white_a20: hsla(0, 0%, 100%, 0.2);
+        --white_a10: hsla(0, 0%, 100%, 0.1);
+        --black: hsl(0, 0%, 0%);
+        --positive: linear-gradient(45deg, #cf443c, #cf443c);
+        --negative: linear-gradient(45deg, #5976e2, #5976e2);
+        /**
+         * TIPOGRAFIS
+         */
+
+        --ff-oswald: "Oswald", sans-serif;
+        --ff-rubik: "Rubik", sans-serif;
+        --ff-poppins: "Poppins", sans-serif;
+
+        --headline-lg: 5rem;
+        --headline-md: 3rem;
+        --headline-sm: 2rem;
+        --title-lg: 1.8rem;
+        --title-md: 1.5rem;
+        --title-sm: 1.4rem;
+
+        --fw-500: 500;
+        --fw-700: 700;
+
+        /**
+         * SPASI
+         */
+
+        --section-padding: 120px;
+
+        /**
+         * BOX SHADOW
+         */
+
+        --shadow-1: 0px 2px 20px hsla(209, 36%, 72%, 0.2);
+        --shadow-2: 0 4px 16px hsla(0, 0%, 0%, 0.06);
+
+        /**
+         * BORDER RADIUS
+         */
+
+        --radius-circle: 50%;
+        --radius-12: 12px;
+        --radius-6: 6px;
+        --radius-4: 4px;
+
+        /**
+         * TRANSITION
+         */
+
+        --transition-1: 0.25s ease;
+        --transition-2: 0.5s ease;
+        --transition-3: 1s ease;
+        --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+        --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      input,
+      textarea {
+        font-family: "Poppins", sans-serif;
+      }
+      .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Latar belakang hitam semi transparan */
+        backdrop-filter: blur(5px);
+        justify-content: center;
+        align-items: center;
+        z-index: 999; /* Pastikan popup berada di atas elemen lainnya */
+      }
+      .popup-content {
+        width: 550px;
+        margin: 20px auto;
+        background-color: white;
+        padding: 20px;
+        padding-left: 30px;
+        border-radius: 8px;
+        max-width: 80%;
+        z-index: 1000; /* Pastikan konten popup berada di atas lapisan overlay */
+        overflow-y: auto; /* Mengaktifkan pengguliran vertikal */
+        max-height: 90vh; /* Membatasi tinggi maksimum kontainer */
+        padding-bottom: 50px;
+      }
+      #span1,
+      #span2,
+      #span3,
+      #span4 {
+        cursor: pointer;
+        background-color: var(--brick-red);
+      }
+      #span1:hover {
+        background-color: var(--mahogany-brown);
+      }
+      #span2:hover {
+        background-color: var(--mahogany-brown);
+      }
+      #span3:hover {
+        background-color: var(--mahogany-brown);
+      }
+      #span4:hover {
+        background-color: var(--mahogany-brown);
+      }
+      .course img {
+        filter: grayscale(40%);
+      }
+      .course img:hover {
+        transform: scale(1.05);
+        filter: none;
+      }
+
+      /* Mengatur ulang gaya scrollbar default untuk browser berbasis WebKit */
+      body::-webkit-scrollbar {
+        width: initial; /* Gunakan lebar bawaan */
+      }
+
+      body::-webkit-scrollbar-track {
+        background: initial; /* Gunakan latar belakang bawaan */
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background: initial; /* Gunakan latar belakang bawaan untuk elemen thumb */
+      }
+
+      body::-webkit-scrollbar-thumb:hover {
+        background: initial; /* Gunakan latar belakang hover bawaan */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Container utama untuk sidebar dan konten pola makan -->
+    <div class="page d-flex">
+      <!-- Sidebar navigasi -->
+      <div class="sidebar bg-white p-20 p-relative">
+        <h3 class="p-relative txt-c mt-0">Selamat Datang {{username}}!</h3>
+        <ul>
+          <li>
+            <a
+              class="d-flex align-center fs-14 c-black rad-6 p-10"
+              href="{% url 'deteksi'%}"
+            >
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+              <span>Deteksi</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="active d-flex align-center fs-14 c-black rad-6 p-10"
+              href="{% url 'pola-makan'%}"
+            >
+              <i class="fa-solid fa-utensils"></i>
+              <span>Pola Makan</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="d-flex align-center fs-14 c-black rad-6 p-10"
+              href="{% url 'home' %}"
+            >
+              <i class="fa-solid fa-circle-arrow-left"></i>
+              <span>Keluar</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="content w-full">
+        <h1 class="p-relative">Pola Makan</h1>
+        <div class="courses-page d-grid m-20 gap-20">
+          <!-- Pola Makan Rendah Karbohidrat -->
+          <div class="course bg-white rad-6 p-relative">
+            <img
+              class="cover"
+              src="{% static 'dashboard/imgs/pola-makan1.jpg'%}"
+              alt=""
+            />
+            <div class="p-20">
+              <h4 class="m-0">Pola Makan Rendah Karbohidrat</h4>
+              <p class="description c-grey mt-15 fs-14">
+                <b>Tujuan</b>: Menstabilkan kadar gula darah dan membantu
+                menurunkan berat badan
+              </p>
+            </div>
+            <div class="info p-15 p-relative between-flex">
+              <span class="title bg-blue c-white btn-shape" id="span1">
+                lihat lebih banyak
+              </span>
+              <span><i class="fa-solid fa-user"></i> 35-45 tahun</span>
+            </div>
+          </div>
+
+          <!-- Pola Makan Mediterania (Wilayah Laut Tengah) -->
+          <div class="course bg-white rad-6 p-relative">
+            <img
+              class="cover"
+              src="{% static 'dashboard/imgs/pola-makan2.jpg'%}"
+              alt=""
+            />
+            <div class="p-20">
+              <h4 class="m-0">Pola Makan Mediterania (Wilayah Laut Tengah)</h4>
+              <p class="description c-grey mt-15 fs-14">
+                <b>Tujuan</b>: Mengurangi risiko kardiovaskular dan menjaga
+                kadar gula tetap stabil
+              </p>
+            </div>
+            <div class="info p-15 p-relative between-flex">
+              <span class="title bg-blue c-white btn-shape" id="span2">
+                lihat lebih banyak
+              </span>
+              <span><i class="fa-solid fa-user"></i> 60-70 tahun</span>
+            </div>
+          </div>
+
+          <!-- Pola Makan Vegetarian (Tanpa Daging) -->
+          <div class="course bg-white rad-6 p-relative">
+            <img
+              class="cover"
+              src="{% static 'dashboard/imgs/pola-makan3.jpg'%}"
+              alt=""
+            />
+            <div class="p-20">
+              <h4 class="m-0">Pola Makan Vegetarian (Tanpa Daging)</h4>
+              <p class="description c-grey mt-15 fs-14">
+                <b>Tujuan</b>: Menjaga tingkat energi yang baik dan mengelola
+                kadar gula darah
+              </p>
+            </div>
+            <div class="info p-15 p-relative between-flex">
+              <span class="title bg-blue c-white btn-shape" id="span3">
+                lihat lebih banyak
+              </span>
+              <span><i class="fa-solid fa-user"></i> 20-30 tahun</span>
+            </div>
+          </div>
+
+          <!-- Pola Makan Rendah Indeks Glikemik -->
+          <div class="course bg-white rad-6 p-relative">
+            <img
+              class="cover"
+              src="{% static 'dashboard/imgs/pola-makan4.jpg' %}"
+              alt=""
+            />
+            <div class="p-20">
+              <h4 class="m-0">Pola Makan Rendah Indeks Glikemik</h4>
+              <p class="description c-grey mt-15 fs-14">
+                <b>Tujuan</b>: Tujuan: Membantu menjaga kestabilan kadar gula
+                darah secara konsisten sepanjang hari
+              </p>
+            </div>
+            <div class="info p-15 p-relative between-flex">
+              <span class="title bg-blue c-white btn-shape" id="span4">
+                lihat lebih banyak
+              </span>
+              <span><i class="fa-solid fa-user"></i> 40-50 tahun</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--------------------------------------------------------------------->
+    <!-- Popup detail untuk setiap pola makan -->
+    <!-- Container 1 -->
+    <div class="popup-container" id="popupContainer1" style="display: none">
+      <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
+        <h2 class="mt-0 mb-25">Pola Makan Rendah Karbohidrat</h2>
+        <ul class="m-0">
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-blue mr-15 d-block rad-half"></span>
+            <div class="pl-15 blue">
+              <p class="fs-14 fw-bold mt-0 mb-5">Sarapan</p>
+              <span class="fs-13 c-grey">• Omelet dengan bayam dan jamur</span
+              ><br />
+              <span class="fs-13 c-grey">• Alpukat yang diiris</span><br />
+              <span class="fs-13 c-grey">• Teh hijau tanpa gula</span><br />
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-green mr-15 d-block rad-half"></span>
+            <div class="pl-15 green">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Siang</p>
+              <span class="fs-13 c-grey"
+                >• Salad ayam panggang dengan sayuran hijau</span
+              ><br />
+              <span class="fs-13 c-grey"
+                >• Saus vinaigrette ringan dengan lemon dan minyak zaitun</span
+              ><br />
+              <span class="fs-13 c-grey">• Yogurt tawar tanpa gula</span>
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-red mr-15 d-block rad-half"></span>
+            <div class="pl-15 red">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Malam</p>
+              <span class="fs-13 c-grey"
+                >• Salmon panggang dengan brokoli kukus</span
+              ><br />
+              <span class="fs-13 c-grey">• Halusan kembang kol</span><br />
+              <span class="fs-13 c-grey"
+                >• Sebagian kecil buah beri merah (raspberi, blueberry)</span
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Container 2 -->
+    <!-- Popup detail untuk setiap pola makan -->
+    <div class="popup-container" id="popupContainer2" style="display: none">
+      <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
+        <h2 class="mt-0 mb-25">Pola Makan Mediterania (Wilayah Laut Tengah)</h2>
+        <ul class="m-0">
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-blue mr-15 d-block rad-half"></span>
+            <div class="pl-15 blue">
+              <p class="fs-14 fw-bold mt-0 mb-5">Sarapan</p>
+              <span class="fs-13 c-grey"
+                >• Yogurt Yunani dengan madu dan kacang</span
+              ><br />
+              <span class="fs-13 c-grey"
+                >• Sepotong roti gandum dengan minyak zaitun</span
+              ><br />
+              <span class="fs-13 c-grey">• Buah (apel atau pir)</span><br />
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-green mr-15 d-block rad-half"></span>
+            <div class="pl-15 green">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Siang</p>
+              <span class="fs-13 c-grey"
+                >• Ikan panggang (dorade atau sarden)</span
+              ><br />
+              <span class="fs-13 c-grey">• Tumis sayuran ala Ratatouille</span
+              ><br />
+              <span class="fs-13 c-grey"
+                >• Semangkuk kecil beras merah atau singkong kukus sebagai
+                pengganti nasi</span
+              >
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-red mr-15 d-block rad-half"></span>
+            <div class="pl-15 red">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Malam</p>
+              <span class="fs-13 c-grey"
+                >• Salad Yunani dengan keju feta dan zaitun</span
+              ><br />
+              <span class="fs-13 c-grey">• Sepotong roti gandum</span><br />
+              <span class="fs-13 c-grey">• Segelas susu almond tanpa gula</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Container 3 -->
+    <!-- Popup detail untuk setiap pola makan -->
+    <div class="popup-container" id="popupContainer3" style="display: none">
+      <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
+        <h2 class="mt-0 mb-25">
+          Pola Makan Vegetarian (Tanpa Daging) (Tanpa Daging)
+        </h2>
+        <ul class="m-0">
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-blue mr-15 d-block rad-half"></span>
+            <div class="pl-15 blue">
+              <p class="fs-14 fw-bold mt-0 mb-5">Sarapan</p>
+              <span class="fs-13 c-grey"
+                >• Smoothie hijau (bayam, pisang, susu almond)</span
+              ><br />
+              <span class="fs-13 c-grey"
+                >• Roti gandum panggang dengan alpukat halus</span
+              ><br />
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-green mr-15 d-block rad-half"></span>
+            <div class="pl-15 green">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Siang</p>
+              <span class="fs-13 c-grey"
+                >• Salad lentil dengan sayuran beragam</span
+              ><br />
+              <span class="fs-13 c-grey">• Semangkuk sup sayuran</span><br />
+              <span class="fs-13 c-grey">• Yogurt tawar dengan biji chia</span>
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-red mr-15 d-block rad-half"></span>
+            <div class="pl-15 red">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Malam</p>
+              <span class="fs-13 c-grey">• Kari sayuran dengan nasi merah</span
+              ><br />
+              <span class="fs-13 c-grey">• Salad mentimun dan tomat</span><br />
+              <span class="fs-13 c-grey"
+                >• Apel panggang dengan sedikit kayu manis</span
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Container 4 -->
+    <!-- Popup detail untuk setiap pola makan -->
+    <div class="popup-container" id="popupContainer4" style="display: none">
+      <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
+        <h2 class="mt-0 mb-25">Pola Makan Rendah Indeks Glikemik</h2>
+        <ul class="m-0">
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-blue mr-15 d-block rad-half"></span>
+            <div class="pl-15 blue">
+              <p class="fs-14 fw-bold mt-0 mb-5">Sarapan</p>
+              <span class="fs-13 c-grey">• Oatmeal dengan potongan apel</span
+              ><br />
+              <span class="fs-13 c-grey">• Segelas susu almond tanpa gula</span
+              ><br />
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-green mr-15 d-block rad-half"></span>
+            <div class="pl-15 green">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Siang</p>
+              <span class="fs-13 c-grey"
+                >• Beras merah dengan sayuran segar yang dikukus</span
+              ><br />
+              <span class="fs-13 c-grey">• Dada ayam panggang</span><br />
+            </div>
+          </li>
+          <li class="d-flex align-center mt-15">
+            <span class="key bg-red mr-15 d-block rad-half"></span>
+            <div class="pl-15 red">
+              <p class="fs-14 fw-bold mt-0 mb-5">Makan Malam</p>
+              <span class="fs-13 c-grey"
+                >• Salmon panggang dengan asparagus</span
+              ><br />
+              <span class="fs-13 c-grey">• Secangkir teh hijau tanpa gula</span
+              ><br />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Script untuk mengatur tampilan popup -->
+    <script>
+      // Fungsi untuk menangani tampilan popup dan menutupnya saat mengklik di luar
+      function setupPopup(spanId, popupContainerId) {
+        var spanElement = document.getElementById(spanId);
+        var popupContainer = document.getElementById(popupContainerId);
+
+        spanElement.addEventListener("click", function (event) {
+          event.preventDefault(); // Mencegah aksi bawaan dari tautan
+          popupContainer.style.display = "flex"; // Menampilkan kontainer popup
+        });
+
+        // Menutup popup saat mengklik di luar
+        window.addEventListener("click", function (event) {
+          if (event.target === popupContainer) {
+            popupContainer.style.display = "none";
+          }
+        });
+      }
+
+      // Daftar ID elemen span dan kontainer popup
+      var spanPopupPairs = [
+        { spanId: "span1", popupContainerId: "popupContainer1" },
+        { spanId: "span2", popupContainerId: "popupContainer2" },
+        { spanId: "span3", popupContainerId: "popupContainer3" },
+        { spanId: "span4", popupContainerId: "popupContainer4" },
+      ];
+
+      // Menyiapkan popup untuk setiap elemen span
+      spanPopupPairs.forEach(function (pair) {
+        setupPopup(pair.spanId, pair.popupContainerId);
+      });
+    </script>
+  </body>
+</html>

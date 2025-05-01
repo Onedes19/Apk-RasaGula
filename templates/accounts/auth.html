@@ -1,0 +1,138 @@
+<!doctype html>
+{% load static %}
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'auth.css' %}" />
+    <!-- Ikon dan judul halaman -->
+    <title>Autentikasi</title>
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/rasagula.svg' %}"
+      type="image/svg+xml"
+    />
+  </head>
+  <body>
+    <!-- Container utama untuk halaman autentikasi -->
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <!-- Formulir untuk masuk (login) -->
+          <form action="{% url 'login' %}" method="post" class="sign-in-form">
+            {% csrf_token %}
+            <h1 class="title">MASUK</h1>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                placeholder="Nama Pengguna"
+                name="username"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                placeholder="Kata Sandi"
+                name="password"
+                required
+              />
+            </div>
+            <input type="submit" value="Masuk" class="btn solid" />
+          </form>
+
+          <form
+            action="{% url 'register' %}"
+            method="post"
+            class="sign-up-form"
+          >
+            {% csrf_token %}
+            <h1 class="title">DAFTAR</h1>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                placeholder="Nama Pengguna"
+                name="username"
+                required
+              />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" name="email" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                placeholder="Kata Sandi"
+                name="password"
+                required
+              />
+            </div>
+            <input type="submit" class="btn" value="Daftar" />
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <!-- Panel kiri untuk pengguna baru -->
+        <div class="panel left-panel">
+          <div class="content" id="content-register">
+            <h3>SELAMAT DATANG DI RASAGULA!</h3>
+            <p>
+              Bergabunglah sekarang untuk deteksi risiko diabetes lebih awal dan
+              jaga kesehatan Anda mulai sekarang!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">Daftar</button>
+          </div>
+          <a href="{% url 'home'%}"
+            ><img
+              id="login-img"
+              src="{% static 'images/login.svg' %}"
+              class="image"
+              alt=""
+          /></a>
+        </div>
+        <!-- Panel kanan untuk pengguna yang sudah memiliki akun -->
+        <div class="panel right-panel">
+          <div class="content" id="content-login">
+            <h3>SUDAH PUNYA AKUN?</h3>
+            <p>
+              Masuk sekarang dan mulai perjalanan Anda menuju kesehatan yang
+              lebih baik dengan deteksi dini diabetes.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">Masuk</button>
+          </div>
+          <a href="{% url 'home'%}"
+            ><img
+              id="register-img"
+              src="{% static 'images/register.svg' %}"
+              class="image"
+              alt=""
+          /></a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const sign_in_btn = document.querySelector("#sign-in-btn");
+      const sign_up_btn = document.querySelector("#sign-up-btn");
+      const container = document.querySelector(".container");
+
+      sign_up_btn.addEventListener("click", () => {
+        container.classList.add("sign-up-mode");
+      });
+
+      sign_in_btn.addEventListener("click", () => {
+        container.classList.remove("sign-up-mode");
+      });
+    </script>
+  </body>
+</html>
