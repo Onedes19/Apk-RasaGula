@@ -123,22 +123,30 @@
         width: 60%;
       }
       .info-box {
-        background: #f9e8e1;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 14px;
-        color: #333;
-        width: 30%;
-        min-width: 280px;
+        background: #fff5ef;
+        padding: 20px 24px;
+        border-radius: 14px;
+        font-size: 15px;
+        color: #5a2b1c;
+        width: 430px;
         position: absolute;
-        top: 105.5px;
-        right: 40px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: justify; /* Menjadikan teks rata kanan-kiri */
+        top: 105px;
+        right: 30px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        border-left: 5px solid #86332d;
+        font-family: "Poppins", sans-serif;
+        text-align: justify;
+        line-height: 1.5;
+        transition: all 0.3s ease-in-out;
       }
+
       .info-box h3 {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #86332d;
       }
+
       .input-container {
         position: relative;
       }
@@ -174,23 +182,27 @@
         opacity: 1;
       }
       .error-box {
-        background: #f0e1cc;
-        padding: 15px;
-        border-radius: 8px;
-        font-size: 14px;
-        color: #333;
-        width: 30%;
-        min-width: 280px;
+        background: #fff5ef;
+        padding: 20px 24px;
+        border-radius: 14px;
+        font-size: 15px;
+        color: #5a2b1c;
+        width: 430px;
         position: absolute;
-        top: 230px;
-        right: 40px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        top: 230px; /* bisa sesuaikan posisinya di bawah info-box */
+        right: 30px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+        border-left: 5px solid #86332d;
+        font-family: "Poppins", sans-serif;
         text-align: justify;
+        line-height: 1.5;
+        transition: all 0.3s ease-in-out;
       }
       .error-box h3 {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 600;
+        color: #86332d;
       }
     </style>
 
@@ -472,22 +484,22 @@
       };
       const infoData = {
         jumlah_kehamilan:
-          "Masukkan jumlah total kehamilan yang pernah dialami, termasuk keguguran. Semakin banyak kehamilan, semakin besar risiko diabetes gestasional. Jika lebih dari 3 kali, disarankan rutin memeriksa kadar gula darah dan menjaga pola makan sehat.",
+          "Masukkan jumlah total kehamilan yang pernah dialami, termasuk keguguran!<br><strong>Penjelasan:</strong> Semakin banyak kehamilan, semakin besar risiko diabetes gestasional. Jika lebih dari 3 kali, disarankan rutin memeriksa kadar gula darah dan menjaga pola makan sehat.",
         gula_darah:
-          "Masukkan kadar gula darah dalam mg/dL. Normalnya, kadar gula darah puasa di bawah 100 mg/dL. Jika lebih dari 126 mg/dL, bisa menjadi tanda diabetes. Jaga pola makan dan rutin periksa kadar gula darah untuk kesehatan tubuh.",
+          "Masukkan kadar gula darah dalam mg/dL!<br><strong>Penjelasan:</strong> Normalnya, kadar gula darah puasa di bawah 100 mg/dL. Jika lebih dari 126 mg/dL, bisa menjadi tanda diabetes. Jaga pola makan dan rutin periksa kadar gula darah untuk kesehatan tubuh.",
         tekanan_darah:
-          "Masukkan tekanan darah sistolik dalam mmHg. Normalnya di bawah 120 mmHg. Jika lebih dari 140 mmHg, bisa meningkatkan risiko hipertensi dan komplikasi diabetes. Kontrol tekanan darah dengan pola hidup sehat dan rutin berolahraga.",
+          "Masukkan tekanan darah sistolik dalam mmHg!<br><strong>Penjelasan:</strong> Normalnya di bawah 120 mmHg. Jika lebih dari 140 mmHg, bisa meningkatkan risiko hipertensi dan komplikasi diabetes. Kontrol tekanan darah dengan pola hidup sehat dan rutin berolahraga.",
         lingkar_perut:
-          "Masukkan ukuran lingkar perut dalam cm. Normalnya, tidak lebih dari 90 cm untuk pria dan 80 cm untuk wanita. Lingkar perut yang berlebih dapat meningkatkan risiko diabetes, jadi jaga pola makan dan tetap aktif bergerak.",
+          "Masukkan ukuran lingkar perut dalam cm!<br><strong>Penjelasan:</strong> Normalnya tidak lebih dari 90 cm untuk pria dan 80 cm untuk wanita. Lingkar perut berlebih meningkatkan risiko diabetes.",
         insulin:
-          "Masukkan kadar insulin dalam mUI/ml. Insulin membantu mengatur kadar gula darah. Normalnya berkisar 5–60 mUI/ml. Pada individu dengan diabetes, kadar insulin cenderung lebih tinggi, yaitu 61–355 mUI/ml. Pola hidup sehat membantu menjaga keseimbangan insulin.",
-        imt: "Masukkan nilai IMT (Indeks Massa Tubuh). IMT dihitung dari berat badan (kg) dibagi tinggi badan (m) kuadrat. Normalnya 18,5–24,9. Jika lebih dari 25, termasuk kelebihan berat badan dan berisiko diabetes. Jaga berat badan dengan pola makan sehat dan olahraga.",
+          "Masukkan kadar insulin dalam mUI/ml!<br><strong>Penjelasan:</strong> Normal 5–60 mUI/ml. Diabetes bisa menyebabkan kadar insulin melebihi 60. Jaga keseimbangan dengan pola hidup sehat.",
+        imt: "Masukkan nilai IMT (Indeks Massa Tubuh)!<br><strong>Penjelasan:</strong> IMT normal adalah 18,5–24,9. Lebih dari itu berisiko diabetes. Hitung dari berat/tinggi² dan jaga pola makan.",
         riwayat_keluarga:
-          "Masukkan 0 jika tidak memiliki riwayat diabetes, dan 1 jika ada riwayat dalam keluarga. Risiko diabetes lebih tinggi jika orang tua atau saudara kandung mengalaminya. Gaya hidup sehat tetap penting untuk pencegahan.",
-        usia: "Masukkan usia dalam tahun. Setelah usia 45 tahun, risiko diabetes meningkat karena perubahan metabolisme. Jaga pola makan, tetap aktif, dan lakukan pemeriksaan rutin untuk menjaga kadar gula darah tetap stabil.",
+          "Masukkan 0 jika tidak ada, dan 1 jika ada riwayat diabetes dalam keluarga!<br><strong>Penjelasan:</strong> Riwayat keluarga meningkatkan risiko, tapi bisa dicegah dengan gaya hidup sehat.",
+        usia: "Masukkan usia Anda dalam tahun!<br><strong>Penjelasan:</strong> Setelah usia 45 tahun, risiko diabetes meningkat. Pola hidup sehat dan pemeriksaan rutin sangat dianjurkan.",
       };
       function showInfo(field) {
-        document.getElementById("info-text").innerText =
+        document.getElementById("info-text").innerHTML =
           infoData[field] || "Informasi tidak tersedia.";
       }
       document.addEventListener("DOMContentLoaded", function () {
