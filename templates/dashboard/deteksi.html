@@ -400,34 +400,53 @@
           console.log("val8 :" + val8);
           console.log("val6:" + val6);
           success.innerHTML = `
-      <form class="contact-form positive" style='position:fixed; top: 7%; left: 30%;'>
-        <h2 style="color: white; text-align: center;">Hasil Deteksi Anda Menunjukkan Positif!</h4>
-        <h3 style="color: white; text-align: center;">Kemungkinan: ${probability}%</h3>
-        <div class="input-container">
-          <input type="text" class="input"  name="n1" value="${val1}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  name="n2" value="${val2}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input" name="n3" value="${val3}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input" name="n4" value="${val4}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input" name="n5" value="${val5}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text"  class="input"  value="${val6}" readonly name="n6" />
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  name="n7" value="${val7}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  value="${val8}" readonly>
-        </div>
-      </form>
+<form class="contact-form positive" style="
+  width: 560px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 28px;
+  border-radius: 16px;
+  background: linear-gradient(to bottom, #c4002f, #d83342);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.25);
+">
+  <h2 style="color: white; text-align: center; font-size: 18px; margin-bottom: 6px;">
+    ⚠ Anda Terindikasi Diabetes
+  </h2>
+  <h3 style="color: white; text-align: center; font-size: 15px; margin-bottom: 10px;">
+    Prediksi Risiko Diabetes: ${probability}%
+  </h3>
+  <p style="color: white; text-align: justify; font-size: 13px; margin-bottom: 12px;">
+    Berdasarkan data yang Anda masukkan, sistem memprediksi adanya potensi diabetes.  
+Disarankan untuk berkonsultasi dengan tenaga medis dan mulai menerapkan gaya hidup sehat secara konsisten.
+  </p>
+  <hr style="border-color: rgba(255,255,255,0.3); margin-bottom: 12px;">
+
+  ${[
+    ["Jumlah Kehamilan", "n1", val1],
+    ["Gula Darah (mg/dL)", "n2", val2],
+    ["Tekanan Darah (mmHg)", "n3", val3],
+    ["Lingkar Perut (cm)", "n4", val4],
+    ["Insulin (mUI/ml)", "n5", val5],
+    ["IMT (Indeks Massa Tubuh)", "n6", val6],
+    ["Riwayat Diabetes (0/Tidak, 1/Iya)", "n7", val7],
+    ["Usia", "n8", val8],
+  ]
+    .map(
+      ([label, name, val]) => `
+    <div style="margin-bottom: 8px;">
+      <label style="color: white; font-size: 12.5px; font-weight: 500; display: block; margin-bottom: 3px;">
+        ${label}
+      </label>
+      <input type="text" name="${name}" value="${val}" readonly
+        style="width: 100%; padding: 6px 10px; font-size: 13px; color: white;
+               background-color: transparent; border: 1.3px solid white; border-radius: 10px;" />
+    </div>
+  `
+    )
+    .join("")}
+</form>
     `;
           success.classList.add("visible");
 
@@ -441,34 +460,54 @@
           var success = document.getElementById("popupcontainertest");
           console.log("result false");
           success.innerHTML = `
-      <form class="contact-form negative" style='position:fixed; top: 7%; left: 30%;'>
-        <h2 style="color: white; text-align: center;"> Hasil Deteksi Anda Menunjukkan Negatif! </h2>
-        <h3 style="color: white; text-align: center;">Kemungkinan: ${probability}%</h3>
-        <div class="input-container">
-          <input type="text" class="input"  name="n1" value="${val1}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  name="n2" value="${val2}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input" name="n3" value="${val3}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input" name="n4" value="${val4}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input" name="n5" value="${val5}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  value="${val6}" readonly name="n6" />
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  name="n7" value="${val7}" readonly/>
-        </div>
-        <div class="input-container">
-          <input type="text" class="input"  value="${val8}" readonly>
-        </div>
-      </form>
+     <form class="contact-form negative" style="
+  width: 560px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 28px;
+  border-radius: 16px;
+  background: linear-gradient(to bottom, #128C44, #28A745);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.25);
+">
+  <h2 style="color: white; text-align: center; font-size: 18px; margin-bottom: 6px;">
+    ✅ Anda Tidak Terindikasi Diabetes
+  </h2>
+  <h3 style="color: white; text-align: center; font-size: 15px; margin-bottom: 10px;">
+    Prediksi Risiko Diabetes: ${probability}%
+  </h3>
+  <p style="color: white; text-align: justify; font-size: 13px; margin-bottom: 12px;">
+    Berdasarkan data yang Anda masukkan, sistem tidak menemukan potensi diabetes. 
+    Tetap jaga pola hidup sehat dan lakukan pemeriksaan rutin untuk menjaga kesehatan Anda.
+  </p>
+  <hr style="border-color: rgba(255,255,255,0.3); margin-bottom: 12px;">
+
+  ${[
+    ["Jumlah Kehamilan", "n1", val1],
+    ["Gula Darah (mg/dL)", "n2", val2],
+    ["Tekanan Darah (mmHg)", "n3", val3],
+    ["Lingkar Perut (cm)", "n4", val4],
+    ["Insulin (mUI/ml)", "n5", val5],
+    ["IMT (Indeks Massa Tubuh)", "n6", val6],
+    ["Riwayat Diabetes (0/Tidak, 1/Iya)", "n7", val7],
+    ["Usia", "n8", val8],
+  ]
+    .map(
+      ([label, name, val]) => `
+    <div style="margin-bottom: 8px;">
+      <label style="color: white; font-size: 12.5px; font-weight: 500; display: block; margin-bottom: 3px;">
+        ${label}
+      </label>
+      <input type="text" name="${name}" value="${val}" readonly
+        style="width: 100%; padding: 6px 10px; font-size: 13px; color: white;
+               background-color: transparent; border: 1.3px solid white; border-radius: 10px;" />
+    </div>
+  `
+    )
+    .join("")}
+</form>
+
     `;
           success.classList.add("visible");
 
