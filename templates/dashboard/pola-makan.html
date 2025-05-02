@@ -133,6 +133,9 @@
         align-items: center;
         z-index: 999; /* Pastikan popup berada di atas elemen lainnya */
       }
+      .popup-content h2 {
+        text-align: center;
+      }
       .popup-content {
         width: 550px;
         margin: 20px auto;
@@ -228,103 +231,79 @@
         </ul>
       </div>
 
-      <div class="content w-full">
-        <h1 class="p-relative">Pola Makan</h1>
-        <div class="courses-page d-grid m-20 gap-20">
-          <!-- Pola Makan Vegetarian (Tanpa Daging) -->
-          <div class="course bg-white rad-6 p-relative">
-            <img
-              class="cover"
-              src="{% static 'dashboard/imgs/pola-makan3.jpg'%}"
-              alt=""
-            />
-            <div class="p-20">
-              <h4 class="m-0">Pola Makan Vegetarian <br />(Tanpa Daging)</h4>
-              <p class="description c-grey mt-15 fs-14">
-                <b>Tujuan</b>: Menjaga tingkat energi yang baik dan mengelola
-                kadar gula darah
-              </p>
-            </div>
-            <div class="info p-15 p-relative between-flex">
-              <span class="title bg-blue c-white btn-shape" id="span3">
-                lihat lebih banyak
-              </span>
-              <span><i class="fa-solid fa-user"></i> 20-30 tahun</span>
-            </div>
-          </div>
-          <!-- Pola Makan Rendah Karbohidrat -->
-          <div class="course bg-white rad-6 p-relative">
-            <img
-              class="cover"
-              src="{% static 'dashboard/imgs/pola-makan1.jpg'%}"
-              alt=""
-            />
-            <div class="p-20">
-              <h4 class="m-0">Pola Makan Rendah Karbohidrat</h4>
-              <p class="description c-grey mt-15 fs-14">
-                <b>Tujuan</b>: Menstabilkan kadar gula darah dan membantu
-                menurunkan berat badan
-              </p>
-            </div>
-            <div class="info p-15 p-relative between-flex">
-              <span class="title bg-blue c-white btn-shape" id="span1">
-                lihat lebih banyak
-              </span>
-              <span><i class="fa-solid fa-user"></i> 35-45 tahun</span>
-            </div>
-          </div>
-          <!-- Pola Makan Rendah Indeks Glikemik -->
-          <div class="course bg-white rad-6 p-relative">
-            <img
-              class="cover"
-              src="{% static 'dashboard/imgs/pola-makan4.jpg' %}"
-              alt=""
-            />
-            <div class="p-20">
-              <h4 class="m-0">Pola Makan Rendah Indeks Glikemik</h4>
-              <p class="description c-grey mt-15 fs-14">
-                <b>Tujuan</b>: Tujuan: Membantu menjaga kestabilan kadar gula
-                darah secara konsisten sepanjang hari
-              </p>
-            </div>
-            <div class="info p-15 p-relative between-flex">
-              <span class="title bg-blue c-white btn-shape" id="span4">
-                lihat lebih banyak
-              </span>
-              <span><i class="fa-solid fa-user"></i> 40-50 tahun</span>
-            </div>
-          </div>
-          <!-- Pola Makan Mediterania (Wilayah Laut Tengah) -->
-          <div class="course bg-white rad-6 p-relative">
-            <img
-              class="cover"
-              src="{% static 'dashboard/imgs/pola-makan2.jpg'%}"
-              alt=""
-            />
-            <div class="p-20">
-              <h4 class="m-0">Pola Makan Mediterania (Wilayah Laut Tengah)</h4>
-              <p class="description c-grey mt-15 fs-14">
-                <b>Tujuan</b>: Mengurangi risiko kardiovaskular dan menjaga
-                kadar gula tetap stabil
-              </p>
-            </div>
-            <div class="info p-15 p-relative between-flex">
-              <span class="title bg-blue c-white btn-shape" id="span2">
-                lihat lebih banyak
-              </span>
-              <span><i class="fa-solid fa-user"></i> 60-70 tahun</span>
-            </div>
-          </div>
-        </div>
+ <div class="content w-full">
+  <h1 class="p-relative text-center">Pola Makan</h1>
+  <div class="courses-page d-grid m-20 gap-20">
+
+    <!-- Pola Makan Vegetarian (Tanpa Daging) -->
+    <div class="course bg-white rad-6 p-relative">
+      <img class="cover" src="{% static 'dashboard/imgs/pola-makan3.jpg'%}" alt="" />
+      <div class="p-20">
+        <h4 class="m-0 text-center">Pola Makan Vegetarian <br />(Tanpa Daging)</h4>
+        <p class="description c-grey mt-15 fs-14">
+          <b>Tujuan</b>: Menjaga tingkat energi yang baik dan mengelola kadar gula darah
+        </p>
+      </div>
+      <div class="info p-15 p-relative between-flex">
+        <span class="title bg-blue c-white btn-shape" id="span3">lihat lebih banyak</span>
+        <span><i class="fa-solid fa-user"></i> 20-30 tahun</span>
       </div>
     </div>
+
+    <!-- Pola Makan Rendah Karbohidrat -->
+    <div class="course bg-white rad-6 p-relative">
+      <img class="cover" src="{% static 'dashboard/imgs/pola-makan1.jpg'%}" alt="" />
+      <div class="p-20">
+        <h4 class="m-0 text-center">Pola Makan Rendah Karbohidrat</h4>
+        <p class="description c-grey mt-15 fs-14">
+          <b>Tujuan</b>: Menstabilkan kadar gula darah dan membantu menurunkan berat badan
+        </p>
+      </div>
+      <div class="info p-15 p-relative between-flex">
+        <span class="title bg-blue c-white btn-shape" id="span1">lihat lebih banyak</span>
+        <span><i class="fa-solid fa-user"></i> 35-45 tahun</span>
+      </div>
+    </div>
+
+    <!-- Pola Makan Rendah Indeks Glikemik -->
+    <div class="course bg-white rad-6 p-relative">
+      <img class="cover" src="{% static 'dashboard/imgs/pola-makan4.jpg' %}" alt="" />
+      <div class="p-20">
+        <h4 class="m-0 text-center">Pola Makan Rendah Indeks Glikemik</h4>
+        <p class="description c-grey mt-15 fs-14">
+          <b>Tujuan</b>: Membantu menjaga kestabilan kadar gula darah secara konsisten sepanjang hari
+        </p>
+      </div>
+      <div class="info p-15 p-relative between-flex">
+        <span class="title bg-blue c-white btn-shape" id="span4">lihat lebih banyak</span>
+        <span><i class="fa-solid fa-user"></i> 40-50 tahun</span>
+      </div>
+    </div>
+
+    <!-- Pola Makan Mediterania (Wilayah Laut Tengah) -->
+    <div class="course bg-white rad-6 p-relative">
+      <img class="cover" src="{% static 'dashboard/imgs/pola-makan2.jpg'%}" alt="" />
+      <div class="p-20">
+        <h4 class="m-0 text-center">Pola Makan Mediterania <br />(Wilayah Laut Tengah)</h4>
+        <p class="description c-grey mt-15 fs-14">
+          <b>Tujuan</b>: Mengurangi risiko kardiovaskular dan menjaga kadar gula tetap stabil
+        </p>
+      </div>
+      <div class="info p-15 p-relative between-flex">
+        <span class="title bg-blue c-white btn-shape" id="span2">lihat lebih banyak</span>
+        <span><i class="fa-solid fa-user"></i> 60-70 tahun</span>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <!--------------------------------------------------------------------->
     <!-- Popup detail untuk setiap pola makan -->
     <!-- Container 1 -->
     <div class="popup-container" id="popupContainer1" style="display: none">
       <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
-        <h2 class="mt-0 mb-25">Pola Makan Rendah Karbohidrat</h2>
+        <h2 class="mt-0 mb-25" style="text-align: center;">Pola Makan Rendah Karbohidrat</h2>
         <ul class="m-0">
           <li class="d-flex align-center mt-15">
             <span class="key bg-blue mr-15 d-block rad-half"></span>
@@ -370,10 +349,7 @@
     <!-- Popup detail untuk setiap pola makan -->
     <div class="popup-container" id="popupContainer2" style="display: none">
       <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
-        <h2 class="mt-0 mb-25">
-          Pola Makan Mediterania <br />
-          (Wilayah Laut Tengah)
-        </h2>
+        <h2 class="mt-0 mb-25" style="text-align: center;">Pola Makan Mediterania <br />(Wilayah Laut Tengah)</h2>
         <ul class="m-0">
           <li class="d-flex align-center mt-15">
             <span class="key bg-blue mr-15 d-block rad-half"></span>
@@ -422,7 +398,7 @@
     <!-- Popup detail untuk setiap pola makan -->
     <div class="popup-container" id="popupContainer3" style="display: none">
       <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
-        <h2 class="mt-0 mb-25">Pola Makan Vegetarian (Tanpa Daging)</h2>
+        <h2 class="mt-0 mb-25" style="text-align: center;">Pola Makan Vegetarian (Tanpa Daging)</h2>
         <ul class="m-0">
           <li class="d-flex align-center mt-15">
             <span class="key bg-blue mr-15 d-block rad-half"></span>
@@ -467,7 +443,7 @@
     <!-- Popup detail untuk setiap pola makan -->
     <div class="popup-container" id="popupContainer4" style="display: none">
       <div class="reminders p-20 bg-white rad-10 p-relative popup-content">
-        <h2 class="mt-0 mb-25">Pola Makan Rendah Indeks Glikemik</h2>
+        <h2 class="mt-0 mb-25" style="text-align: center;">Pola Makan Rendah Indeks Glikemik</h2>
         <ul class="m-0">
           <li class="d-flex align-center mt-15">
             <span class="key bg-blue mr-15 d-block rad-half"></span>
