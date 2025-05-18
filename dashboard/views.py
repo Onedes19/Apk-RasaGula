@@ -71,7 +71,8 @@ def result(request):
         input_scaled = scaler.transform(input_df)
         prediction = model.predict(input_scaled)
         probability = model.predict_proba(input_scaled)[0][1]
-        probability_percent = round(probability * 100, 2)
+        probability_percent = int(round(probability * 100))
+
     except Exception as e:
         return render(request, 'dashboard/deteksi.html', {
             'error': f"Terjadi kesalahan saat memproses prediksi: {e}",
